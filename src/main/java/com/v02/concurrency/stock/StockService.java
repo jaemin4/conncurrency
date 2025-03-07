@@ -22,11 +22,14 @@ public class StockService {
 
     @Transactional
     public RestResult useStockOnce(ReqStockUseOnceParam param){
+        StockEntity findResult = stockEntityRepository.findByNameWithPessimisticLock(param.getName());
 
-        StockEntity findResult = stockEntityRepository.findByName(param.getName());
+        if(findResult.getQuantity() <= 0){
+            throw new RuntimeException("재고가 부족합니다.");
+        }
+
         findResult.setQuantity(findResult.getQuantity()-1);
         StockEntity resultEntity = stockEntityRepository.save(findResult);
-
         return new RestResult("success","use stock success", Map.of("stockUseResult",resultEntity));
     }
 

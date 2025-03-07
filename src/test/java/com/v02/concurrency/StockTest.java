@@ -47,7 +47,7 @@ public class StockTest {
 
 
     @Test
-    @DisplayName("동시에 100개의 요처으로 재고를 감소.")
+    @DisplayName("동시에 100개의 요청으로 재고를 감소.")
     void decrease_100_request() throws InterruptedException{
         final int threadCount = 100;
         final ExecutorService executorService = Executors.newFixedThreadPool(32);
@@ -67,6 +67,8 @@ public class StockTest {
         log.info("데이터 : {}", stock.getQuantity());
         assertThat(stock.getQuantity()).isEqualTo(0);
     }
+
+
 
     @Test
     void contextLoads() {
