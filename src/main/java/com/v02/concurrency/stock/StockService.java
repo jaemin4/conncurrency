@@ -12,11 +12,22 @@ public class StockService {
 
     private final StockEntityRepository stockEntityRepository;
     public RestResult setStockQuantity(ReqStockSetParam param){
-        StockEntity entity = new StockEntity(param.getQuantity());
+        StockEntity entity = new StockEntity(param.getName(),param.getQuantity());
         entity = stockEntityRepository.save(entity);
 
         return new RestResult("success","save success", Map.of("stockResult",entity));
     }
+
+    public RestResult useStockOnce(ReqStockUseOnceParam param){
+
+        StockEntity findResult = stockEntityRepository.findByName(param.getName());
+        findResult.setQuantity(findResult.getQuantity()-1);
+
+        StockEntity resultEntity = stockEntityRepository.save(findResult);
+
+        return new RestResult("success","use stock success", Map.of("stockUseResult",resultEntity));
+    }
+
 
 
 

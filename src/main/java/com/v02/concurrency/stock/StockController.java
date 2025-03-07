@@ -17,4 +17,9 @@ public class StockController {
         return stockService.setStockQuantity(param);
     }
 
+    @PostMapping("/use")
+    public RestResult useStock(@RequestBody ReqStockUseOnceParam param){
+        return stockService.useStockOnce(param);
+    }
+
 }
