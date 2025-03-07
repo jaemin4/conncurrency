@@ -3,6 +3,7 @@ package com.v02.concurrency.stock;
 import com.v02.concurrency.RestResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 public class StockService {
 
     private final StockEntityRepository stockEntityRepository;
+    @Transactional
     public RestResult setStockQuantity(ReqStockSetParam param){
         StockEntity entity = new StockEntity(param.getName(),param.getQuantity());
         entity = stockEntityRepository.save(entity);
@@ -18,11 +20,11 @@ public class StockService {
         return new RestResult("success","save success", Map.of("stockResult",entity));
     }
 
+    @Transactional
     public RestResult useStockOnce(ReqStockUseOnceParam param){
 
         StockEntity findResult = stockEntityRepository.findByName(param.getName());
         findResult.setQuantity(findResult.getQuantity()-1);
-
         StockEntity resultEntity = stockEntityRepository.save(findResult);
 
         return new RestResult("success","use stock success", Map.of("stockUseResult",resultEntity));
