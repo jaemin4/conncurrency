@@ -1,12 +1,14 @@
-package com.v02.concurrency.stock;
+package com.v02.rabbit.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ReqStockSetParam {
 
     private Long quantity;

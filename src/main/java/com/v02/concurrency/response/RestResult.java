@@ -1,4 +1,4 @@
-package com.v02.concurrency;
+package com.v02.concurrency.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

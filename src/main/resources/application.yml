@@ -1,24 +1,5 @@
 spring:
-  application:
-    name: concurrency
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/concu?rewriteBatchedStatements=true
-    username: root
-    password: 12345
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        order_inserts: true
-        order_updates: true
-        show_sql: true
-        id:
-          new_generator_mappings: false
-
-
-    database-platform: org.hibernate.dialect.MySQL8Dialect  # MySQL 8 Dialect ??
+  config:
+    import:
+      - classpath:/application-rabbit.yml
+      - classpath:/application-main.yml

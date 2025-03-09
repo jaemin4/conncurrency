@@ -1,4 +1,4 @@
-package com.v02.concurrency.stock;
+package com.v02.rabbit.stock;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -16,8 +16,6 @@ public class StockEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
-
 
     @Column(length = 77,unique = true)
     private String name;
