@@ -73,11 +73,17 @@ public class StockMainServiceTest {
         //  결과/성공
     }
 
+
+    /*
+        CHECKPOINT 4
+        Comment : 컨슈머에서 하나씩 DB에 적용해서 트랜잭션 문제가 발생되지 않게끔 시도했습니다 그렇지만 100개의 요청을
+        동시에 넣었을때 예상과 다르게 재고가 0으로 감소하지 않는 문제가 있습니다.
+    */
     @Test
     @DisplayName("RabbitMq 동시성 테스트")
     void RabbitmqTest() throws InterruptedException{
         decrease_request("test","rabbitmq",100,0L);
-        //  결과/성공
+        //  결과/실패
     }
     void decrease_request(String name, String type, Integer requestNum, Long expectedNumb) throws InterruptedException{
         final int threadCount = requestNum;

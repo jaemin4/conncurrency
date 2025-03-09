@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 public class StockRabbitService {
     private final RabbitTemplate rabbitTemplate;
 
+    /*
+        CHECKPOINT 2
+    */
     public void useStockOnce(ReqStockUseOnceParam param){
         rabbitTemplate.convertAndSend("stock.exchange.first","stock.bind.first",param);
     }

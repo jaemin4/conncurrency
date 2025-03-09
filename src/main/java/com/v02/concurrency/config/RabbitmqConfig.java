@@ -59,6 +59,9 @@ public class RabbitmqConfig {
         return rabbitTemplate;
     }
 
+    /*
+         CHECKPOINT 1
+    */
     @Bean
     public SimpleRabbitListenerContainerFactory rabbitListenerContainerFactory(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();

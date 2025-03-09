@@ -13,6 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class ConsumerService {
 
     private final RabbitStockRepository rabbitStockRepository;
+
+
+    /*
+        CHECKPOINT 3
+    */
     @RabbitListener(queues = "stock.queue.first", containerFactory = "rabbitListenerContainerFactory")
     @Transactional
     public void useStockOnce(ReqStockUseOnceParam param) {
